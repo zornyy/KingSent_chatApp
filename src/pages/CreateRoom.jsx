@@ -5,8 +5,8 @@ import pocketbaseEsDMts from "pocketbase"
 export default function CreateRoom() {
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
-
     const pb = new pocketbaseEsDMts("http://127.0.0.1:8090")
+    const currentUser = pb.authStore.model;
 
 
     const handleNameChange = (event) => {
@@ -23,6 +23,7 @@ export default function CreateRoom() {
         const data = {
             name,
             description,
+            user_id: currentUser.id,
         };
 
         if (name == '' || description == '') {

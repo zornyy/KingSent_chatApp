@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import pocketbaseEsDMts from 'pocketbase'
 import ProfileIcon from './ProfileIcon'
-import LinkContainer from './LinkContainer'
 
 
 export default function HomePage() {
@@ -21,7 +20,9 @@ export default function HomePage() {
             <h2>Chat with everyone about anything you want!</h2>
             <Link to="/createRoom"><div className="buttonLight">Create a new Chat 🗿</div></Link>
             <Link to="/sendMessages/?ta4ktcp07a8cbel"><div className="buttonLight">Access the GENERAL Chat 👑</div></Link>
-            <LinkContainer />
+
+            {/* Temporary design */}
+            <Link to="/my-rooms"><div className="buttonLight">My Rooms 📩</div></Link>
       </div>
     )
 }
