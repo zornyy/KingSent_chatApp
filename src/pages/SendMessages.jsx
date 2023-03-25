@@ -3,6 +3,7 @@ import { useLocation } from "react-router"
 import pocketbaseEsDMts from "pocketbase"
 import { useEffect, useRef, useState } from "react"
 import Message from "../components/Message"
+import '../styles/SendMessages.css'
 
 export default function SendMessages() {
     const [message, setMessage] = useState("");

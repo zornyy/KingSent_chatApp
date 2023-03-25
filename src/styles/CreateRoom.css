@@ -1,0 +1,27 @@
+.createRoom_page {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .createRoom_form {
+    align-self: center;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  
+    padding: 1em 0.5em 0.5em 0.5em;
+    margin: 1.5em 0 0 0;
+    
+    background-color: #16171B;
+    border-radius: 10px;
+  }
+  
+  .createRoom_form button {
+    margin: 1em;
+    background-color: rgb(253, 229, 162);
+    color: #16171B;
+    font-weight: bold;
+  }
+  

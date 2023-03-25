@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import pocketbaseEsDMts from "pocketbase"
+import '../styles/CreateRoom.css'
 
 export default function CreateRoom() {
     const [name, setName] = useState("")

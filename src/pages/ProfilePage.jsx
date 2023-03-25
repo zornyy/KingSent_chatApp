@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import pocketbaseEsDMts from "pocketbase"
+import '../styles/Profile.css'
 
 export default function ProfilePage() {
     const pb = new pocketbaseEsDMts("http://127.0.0.1:8090")

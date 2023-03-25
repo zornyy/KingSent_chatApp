@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import pocketbaseEsDMts from "pocketbase"
 import RoomDisplay from "../components/RoomDisplay";
 import { useEffect, useState } from "react";
+import '../styles/MyRooms.css'
 
 export default function MyRooms() {
     const pb = new pocketbaseEsDMts("http://127.0.0.1:8090")

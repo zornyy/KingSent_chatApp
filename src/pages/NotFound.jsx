@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import bruh from '../assets/icons/branchCut.jpg'
+import '../styles/NotFound.css'
 
 
 export default function NotFound() {

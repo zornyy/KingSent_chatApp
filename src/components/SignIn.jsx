@@ -1,5 +1,6 @@
 import { useState } from "react"
 import pocketbaseEsDMts from "pocketbase"
+import '../styles/Connection.css'
 
 export default function SignIn() {
     const [username, setUsername] = useState('')

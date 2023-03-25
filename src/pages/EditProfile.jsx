@@ -1,6 +1,7 @@
 import pocketbaseEsDMts from "pocketbase";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import '../styles/Profile.css'
 
 export default function EdigProfile() {
     const pb = new pocketbaseEsDMts("http://127.0.0.1:8090")
