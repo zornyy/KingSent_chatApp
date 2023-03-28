@@ -44,6 +44,7 @@
 >   - **updated** *SystemField*
 >   - **name** *TextField*
 >   - **description** *TextField*
+>   - **user_id** *RelationField*
 > - ### messages
 >   - **id** *SystemField*
 >   - **created** *SystemField*
