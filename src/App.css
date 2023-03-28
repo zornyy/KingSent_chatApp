@@ -87,6 +87,13 @@ h2 {
   color: #BDBDBD;
 }
 
+.profileIcon img {
+  width: 40px;
+  height: 40px;
+  transition: all ease 250ms;
+  border: 3px solid #BDBDBD;
+}
+
 .profileIcon svg {
   width: 40px;
   height: 40px;
@@ -131,4 +138,25 @@ h2 {
   font-size: x-large;
   margin: 0 0 0.5em 1em;
   color: #BDBDBD;
+}
+
+.LinkButton {
+  margin: 1em; 
+  padding: 10px;
+  background-color: #BDBDBD;
+  border-radius: 5px;
+  color: #2c2c2c;
+  border: 1px solid #2c2c2c;
+  font-family: 'Poppins', sans-serif;
+  transition: all ease 250ms;
+}
+
+.LinkButton:active {
+  color: #BDBDBD;
+  background-color: #2c2c2c;
+  transform: scale(95%);
+}
+
+.LinkButton:visited {
+  color: #2c2c2c;
 }

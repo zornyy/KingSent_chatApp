@@ -11,7 +11,7 @@ export default function RoomDisplay({Iname , Idescription, Iid}, ) {
     const currentUser = pb.authStore.model;
 
     return (
-        <Link to={"/sendMessages/?" + id} className="RoomDisplayRow whiteText">
+        <Link to={"/display-room/?" + id} className="RoomDisplayRow whiteText">
             <div>
                 {name}
             </div>

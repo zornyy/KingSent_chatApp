@@ -1,0 +1,41 @@
+.RoomPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80vw;
+    margin: 0 2em 0 2em;
+}
+
+.RoomImg {
+    width: 7em;
+    border-radius: 9999px;
+
+    margin: 2em;
+}
+
+.RoomName {
+    font-size: 2.5em;
+    text-align: center;
+    margin: 0 0 0.5em 0;
+}
+
+.RoomDescription {
+    margin: -0.5em 1em 1em 1em;
+    padding: 1em;
+    background-color: #36393F;
+    border-radius: 15px;
+    letter-spacing: 1.5px;
+}
+
+.lblDescription {
+    align-self: flex-start;
+    font-size: small;
+    text-transform: uppercase;
+    margin: 1em 0 0 2em;
+    padding: 2px 10px 2px 10px;
+    border-radius: 5px;
+    border: 1px solid #B9B9B9;
+    background-color: #36393F;
+    z-index: 1;
+}
