@@ -1,0 +1,99 @@
+.centerCont {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.centerCont h2 {
+    width: fit-content;
+}
+
+.DisplayUserPage {
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding-top: 15px;
+}
+
+.UserPP {
+    width: 6em;
+    margin: 15px;
+
+    border-radius: 50%;
+}
+
+.Username {
+    width: fit-content;
+    margin: 0 0 0.5em 0;
+}
+
+.prvMessBtn {
+    padding: 2px 25px;
+    color: #D9D9D9;
+    background-color: #36393F;
+    border-radius: 5px;
+    border: 1px solid #D9D9D9;
+
+    margin: 0 0 1em 0;
+}
+
+.prvMessBtn:visited {
+    color: #D9D9D9;
+}
+
+.lblField {
+    align-self: flex-start;
+    font-size: small;
+    text-transform: uppercase;
+    margin: 1em 0 0 2em;
+    padding: 2px 10px 2px 10px;
+    border-radius: 5px;
+    border: 1px solid #B9B9B9;
+    background-color: #36393F;
+    z-index: 1;
+}
+
+.status {
+    padding: 2px 25px;
+    background-color: #36393F;
+    border-radius: 10px;
+
+    margin: 0 0 1.5em 0;
+    max-width: 75vw;
+    text-align: center;
+}
+
+.UserBiography {
+    max-width: 75vw;
+    margin: 0 0 1.5em 0;
+    padding: 2px 25px;
+    background-color: #36393F;
+    border-radius: 10px;
+    letter-spacing: 1.5px;
+}
+
+.memberSince {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: flex-end;
+
+    border-radius: 5px;
+    border: #D9D9D9 1px solid;
+    padding: 5px 30px;
+    margin: 2em 0 0 0;
+    font-size: small;
+}
+
+.bold {
+    font-size: medium;
+}
+

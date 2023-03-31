@@ -11,6 +11,7 @@ import NotFound from './pages/NotFound'
 import EditProfile from './pages/EditProfile'
 import MyRooms from './pages/MyRooms'
 import RoomPage from './pages/RoomPage'
+import UserDisplay from './pages/UserDisplay'
 
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="/my-rooms" element={<MyRooms />} />
         <Route path="/display-room" element={<RoomPage />} />
+        <Route path="/display-user" element={<UserDisplay />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
