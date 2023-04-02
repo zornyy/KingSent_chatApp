@@ -62,17 +62,21 @@
 }
 
 .status {
+    text-align: start;
     padding: 2px 25px;
     background-color: #36393F;
     border-radius: 10px;
 
     margin: 0 0 1.5em 0;
     max-width: 75vw;
+    width: 75vw;
     text-align: center;
 }
 
 .UserBiography {
+    text-align: start;
     max-width: 75vw;
+    width: 75vw;
     margin: 0 0 1.5em 0;
     padding: 2px 25px;
     background-color: #36393F;

@@ -6,6 +6,10 @@ import '../styles/CreateRoom.css'
 export default function CreateRoom() {
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
+    const [fileInput, setFileInput] = useState(null);
+    const [rmvProfilePic, setRmvProfilePic] = useState(false);
+    const [isCreated, setIsCreated] = useState(false);
+    const [newRoomPath, setNewRoomPath] = useState(null);
     const pb = new pocketbaseEsDMts("http://127.0.0.1:8090")
     const currentUser = pb.authStore.model;
 
@@ -18,21 +22,35 @@ export default function CreateRoom() {
         setDescription(event.target.value)
     }
 
+    const handleFileInputChange = (event) => {
+        setFileInput(document.getElementById("roomImageInput").files[0])
+    }
+
+    async function getNewRoomId() {
+        const result = await pb.collection("chat_room").getFirstListItem(`name = "${name}"`);
+        let newPath = "/display-room/?" + result.id;
+        setNewRoomPath(newPath);
+    }
+
     async function createRoom(event) {
         event.preventDefault();
 
-        const data = {
-            name,
-            description,
-            user_id: currentUser.id,
-        };
+        const data = new FormData();
+        data.append("name", name);
+        data.append("description", description);
+        data.append("user_id", currentUser.id);
+        if (fileInput) {
+            data.append("image", fileInput);
+        }
+        
 
         if (name == '' || description == '') {
             console.log("Typing Error")
         } else {
             try {
                 const createdRoom = await pb.collection('chat_room').create(data);
-                console.log("executed")
+                getNewRoomId();
+                setIsCreated(true);
             } catch {
                 console.log("Room could not be created")
             }
@@ -50,15 +68,23 @@ export default function CreateRoom() {
                 </div>
             </Link>
             <div className="createRoom_form">
-                <div className="titleFormField">
-                    <h3 className="smallTitle">Name of the Room</h3>
-                    <input className="titleInput" onChange={handleNameChange} placeholder="Ex. Best chocolate bar" type="text" />
+                <div className="info">
+                    <div className="label" style={{fontSize: "medium"}}>Name of the Room</div>
+                    <input className="PrEditInput" onChange={handleNameChange} placeholder="Ex. Best chocolate bar" type="text" />
                 </div>
-                <div className="titleFormField">
-                    <h3 className="smallTitle">Description</h3>
-                    <textarea className="titleFormTextArea" onChange={handleDescriptionChange} name="description" id="" cols="26" placeholder="Ex. Talking about the best chocolate bars of the world!" rows="10"></textarea>
+                <div className="info">
+                    <div className="label" style={{fontSize: "medium"}}>Description</div>
+                    <textarea className="PrEditInput" onChange={handleDescriptionChange} name="description" id="" cols="26" placeholder="Ex. Talking about the best chocolate bars of the world!" rows="10"></textarea>
                 </div>
-                <button onClick={createRoom}>Create Room</button>
+                <div className="info">
+                    <div className="label" style={{fontSize: "medium"}}>Profile Picture</div>
+                    <input type="file" accept="image/*" id="roomImageInput" className="PrEditInput" onChange={handleFileInputChange} />
+                </div>
+                <div className="bottomButtons">
+                    {isCreated
+                    ? <Link to={newRoomPath} className="logoutButton" >Go to {name}</Link>
+                    : <div onClick={createRoom} className="logoutButton">Create Chat Room</div>}
+                </div>
             </div>
         </div>
     )

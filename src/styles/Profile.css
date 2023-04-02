@@ -27,6 +27,7 @@
     margin: 0 0 1rem 2em;
     color: #BDBDBD;
   }
+
   
   .info .label {
     font-size: small;
@@ -34,6 +35,8 @@
     margin-bottom: 3px;
     margin-left: 5px;
   }
+
+
   
   .info .content {
     border-radius: 3px;
