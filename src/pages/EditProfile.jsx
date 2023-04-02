@@ -12,6 +12,9 @@ export default function EditProfile() {
     const [newFullName, setNewFullName] = useState(currentUser.name);
     const [newProfilePic, setNewProfilePic] = useState(null);
 
+    const [isPorfilePic, setIsProfilePic] = useState(false);
+    const [rmvProfilePic, setRmvProfilePic] = useState(false);
+
     const handleUsernameChange = (e) => {
         setNewUsername(e.target.value);
     }
@@ -32,6 +35,11 @@ export default function EditProfile() {
         setNewProfilePic(document.getElementById("profilePicFileInput").files[0])
     }
 
+    const removeProfilePic = (e) => {
+        setRmvProfilePic(true);
+        console.log("Set to true")
+    }
+
 
     async function updateProfile() {
 
@@ -43,6 +51,8 @@ export default function EditProfile() {
             data.append("status", newStatus)
             if (newProfilePic) {
                 data.append("avatar", newProfilePic)
+            } else if (rmvProfilePic) {
+                data.append("avatar-", currentUser.avatar)
             }
             
 
@@ -51,7 +61,11 @@ export default function EditProfile() {
 
     }
 
-
+    useState(() => {
+        if (currentUser.avatar) {
+            setIsProfilePic(true)
+        }
+    }, [])
 
     return (
         <div className="ProfilePage">
@@ -64,7 +78,10 @@ export default function EditProfile() {
             </div>
         </Link>
         <div className="profileDisplay">
-            <img src={`http://127.0.0.1:8090/api/files/${currentUser.collectionName}/${currentUser.id}/${currentUser.avatar}?thumb=100x100`} className="profilePicture" alt="Your avatar"></img>
+            {isPorfilePic
+            ? <img src={`http://127.0.0.1:8090/api/files/users/${currentUser.id}/${currentUser.avatar}?thumb=100x100`} className="profilePicture" alt="Your avatar"></img>
+            : <img src="https://cdn-icons-png.flaticon.com/512/3135/3135823.png" className="profilePicture" alt="Your avatar"></img>}
+            
             <h2 className="username">{currentUser.username}</h2>
 
             <h3 className="smallTitle">General Infos</h3>
@@ -83,6 +100,7 @@ export default function EditProfile() {
             <div className="info">
                 <div className="label">Profile Picture</div>
                 <input type="file" accept="image/*" id="profilePicFileInput" className="PrEditInput" onChange={handleFileInputChange} />
+                <div className="rmvProfileBtn" onClick={removeProfilePic}>Remove profile Picture</div>
             </div>
             <div className="info">
                 <div className="label">Full Name</div>

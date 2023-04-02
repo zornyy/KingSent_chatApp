@@ -10,6 +10,7 @@ export default function RoomPage() {
     const [chatRoomId, setChatRoomId] = useState((useLocation().search).replace('?', ''));
     const [isLoading, setIsloading] = useState(true);
     const [chatRoom, setChatRoom] = useState();
+    const [isProfilePic, setIsProfilePic] = useState(false);
 
 
     async function fetchRoomInfos() {
@@ -18,6 +19,9 @@ export default function RoomPage() {
         });
         setChatRoom(result);
         setIsloading(false);
+        if (result.image) {
+            setIsProfilePic(true);
+        }
     }
 
     useEffect(() => {
@@ -43,7 +47,9 @@ export default function RoomPage() {
                 </div>
             </Link>
             <div className="RoomPage">
-                <img className="RoomImg" src="https://icon-library.com/images/online-chat-icon/online-chat-icon-7.jpg"/>
+                {isProfilePic
+                ? <img className="RoomImg" src={`http://127.0.0.1:8090/api/files/chat_room/${chatRoom.id}/${chatRoom.image}?thumb=100x100`}/>
+                : <img className="RoomImg" src="https://icon-library.com/images/online-chat-icon/online-chat-icon-7.jpg"/>}
                 <h2 className="RoomName">{chatRoom.name}</h2>
                 <div>
                     <label className="lblDescription">Description</label>
@@ -65,7 +71,5 @@ export default function RoomPage() {
                 </Link>
             </div>
         </div>
-            
-        
     )
 }

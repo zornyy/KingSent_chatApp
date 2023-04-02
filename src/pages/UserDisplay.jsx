@@ -45,7 +45,7 @@ export default function UserDisplay() {
                 <Link className="prvMessBtn">Private Messages</Link>
                 <div>
                 <label className="lblField">status</label>
-                    <div className="status">{user.status} And some shit to make it very long</div>
+                    <div className="status">{user.status}</div>
                 </div>
                 
                 <div>

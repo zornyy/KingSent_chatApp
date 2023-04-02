@@ -87,3 +87,17 @@
   .area {
     height: 5em;
   }
+
+  .rmvProfileBtn {
+    padding: 5px 15px;
+    background-color: rgba(0, 0, 0, 0.329);
+    margin: 10px 0 0 0;
+    width: fit-content;
+    border-radius: 5px;
+    border: #2c2c2c 1px solid;
+  }
+
+  .rmvProfileBtn:hover {
+    transform: scale(98%);
+    border: #BDBDBD 1px solid;
+  }

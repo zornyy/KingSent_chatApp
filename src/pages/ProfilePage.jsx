@@ -1,16 +1,24 @@
 import { Link } from "react-router-dom"
 import pocketbaseEsDMts from "pocketbase"
 import '../styles/Profile.css'
+import { useState } from "react";
 
 export default function ProfilePage() {
     const pb = new pocketbaseEsDMts("http://127.0.0.1:8090")
     const currentUser = pb.authStore.model;
+    const [isPorfilePic, setIsProfilePic] = useState(false);
 
     function Logout() {
         pb.authStore.clear()
         window.location.replace("/");
         return false;
     }
+
+    useState(() => {
+        if (currentUser.avatar) {
+            setIsProfilePic(true)
+        }
+    }, [])
 
     return (
         <div className="ProfilePage">
@@ -23,7 +31,10 @@ export default function ProfilePage() {
                 </div>
             </Link>
             <div className="profileDisplay">
-                <img src={`http://127.0.0.1:8090/api/files/${currentUser.collectionName}/${currentUser.id}/${currentUser.avatar}?thumb=100x100`} className="profilePicture" alt="Your avatar"></img>
+                {isPorfilePic
+                ? <img src={`http://127.0.0.1:8090/api/files/users/${currentUser.id}/${currentUser.avatar}?thumb=100x100`} className="profilePicture" alt="Your avatar"></img>
+                : <img src="https://cdn-icons-png.flaticon.com/512/3135/3135823.png" className="profilePicture" alt="Your avatar"></img>}
+                
                 <h2 className="username">{currentUser.username}</h2>
 
                 <h3 className="smallTitle">General Infos</h3>
