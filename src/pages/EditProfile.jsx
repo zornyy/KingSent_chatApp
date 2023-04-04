@@ -37,7 +37,6 @@ export default function EditProfile() {
 
     const removeProfilePic = (e) => {
         setRmvProfilePic(true);
-        console.log("Set to true")
     }
 
 

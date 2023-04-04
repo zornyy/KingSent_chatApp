@@ -11,6 +11,7 @@ export default function RoomPage() {
     const [isLoading, setIsloading] = useState(true);
     const [chatRoom, setChatRoom] = useState();
     const [isProfilePic, setIsProfilePic] = useState(false);
+    const [isOwner, setIsOwner] = useState(false);
 
 
     async function fetchRoomInfos() {
@@ -21,6 +22,9 @@ export default function RoomPage() {
         setIsloading(false);
         if (result.image) {
             setIsProfilePic(true);
+        }
+        if (currentUser.id == result.expand?.user_id?.id) {
+            setIsOwner(true);
         }
     }
 
@@ -58,13 +62,24 @@ export default function RoomPage() {
                     </div>
                 </div>
                 
-                <div className="roomCreator">
+                {isOwner
+                ? <div className="roomCreator">
+                    Edit
+                    <Link className="linkToCreator" to={"/edit-room/?"+chatRoom.id}>
+                    {isProfilePic
+                    ? <img className="miniPP" src={`http://127.0.0.1:8090/api/files/chat_room/${chatRoom.id}/${chatRoom.image}?thumb=100x100`}/>
+                    : <img className="miniPP" src="https://icon-library.com/images/online-chat-icon/online-chat-icon-7.jpg"/>}
+                    {chatRoom.name} 
+                    </Link>
+                </div>
+                : <div className="roomCreator">
                     Created by 
                     <Link className="linkToCreator" to={"/display-user/?"+chatRoom.expand?.user_id?.id}>
                         <img className="miniPP" src={`http://127.0.0.1:8090/api/files/users/${chatRoom.expand?.user_id?.id}/${chatRoom.expand?.user_id?.avatar}?thumb=100x100`}></img>
                         {chatRoom.expand?.user_id?.username} 
                     </Link>
-                </div>
+                </div>}
+                
                 
                 <Link className="LinkButton" to={"/sendMessages/?"+chatRoomId}>
                     Visit {chatRoom.name}

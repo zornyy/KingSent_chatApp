@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import pocketbaseEsDMts from "pocketbase"
 import '../styles/CreateRoom.css'
+import { Navigate } from "react-router"
 
 export default function CreateRoom() {
     const [name, setName] = useState("")
@@ -9,10 +10,9 @@ export default function CreateRoom() {
     const [fileInput, setFileInput] = useState(null);
     const [rmvProfilePic, setRmvProfilePic] = useState(false);
     const [isCreated, setIsCreated] = useState(false);
-    const [newRoomPath, setNewRoomPath] = useState(null);
+    const [newRoomPath, setNewRoomPath] = useState();
     const pb = new pocketbaseEsDMts("http://127.0.0.1:8090")
     const currentUser = pb.authStore.model;
-
 
     const handleNameChange = (event) => {
         setName(event.target.value)
@@ -24,12 +24,6 @@ export default function CreateRoom() {
 
     const handleFileInputChange = (event) => {
         setFileInput(document.getElementById("roomImageInput").files[0])
-    }
-
-    async function getNewRoomId() {
-        const result = await pb.collection("chat_room").getFirstListItem(`name = "${name}"`);
-        let newPath = "/display-room/?" + result.id;
-        setNewRoomPath(newPath);
     }
 
     async function createRoom(event) {
@@ -49,7 +43,7 @@ export default function CreateRoom() {
         } else {
             try {
                 const createdRoom = await pb.collection('chat_room').create(data);
-                getNewRoomId();
+                setNewRoomPath("/display-room/?" + createdRoom.id);
                 setIsCreated(true);
             } catch {
                 console.log("Room could not be created")
@@ -82,8 +76,8 @@ export default function CreateRoom() {
                 </div>
                 <div className="bottomButtons">
                     {isCreated
-                    ? <Link to={newRoomPath} className="logoutButton" >Go to {name}</Link>
-                    : <div onClick={createRoom} className="logoutButton">Create Chat Room</div>}
+                    ? <Link style={{marginTop: 0}} to={newRoomPath} className="logoutButton" >Go to {name}</Link>
+                    : <div style={{marginTop: 0}} onClick={createRoom} className="logoutButton">Create Chat Room</div>}
                 </div>
             </div>
         </div>
