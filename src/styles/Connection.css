@@ -40,18 +40,11 @@
   .authForm input {
     padding: 0.5em 0.5em 0.5em 0.7em;
     outline: none;
-    border: none;
     border-radius: 999px;
     transition: all ease 250ms;
     z-index: 1;
-    background-color: rgba(0, 0, 0, 0.329);
-    color: #BDBDBD;
   }
-  
-  .inputError {
-    background-color: rgba(255, 0, 0, 0.267);
-    border: rgb(255, 80, 80);
-  }
+
   
   .logForm {
     border: solid 1px whitesmoke;
@@ -69,4 +62,16 @@
   
   .pageLink:hover {
     cursor: pointer;
+  }
+
+  .inputNoError {
+    background-color: rgba(0, 0, 0, 0.329);
+    color: #BDBDBD;
+    border: none;
+  }
+
+  .inputError {
+    background-color: rgba(255, 0, 0, 0.128);
+    border: rgb(255, 113, 113) 1px solid;
+    color: #BDBDBD;
   }

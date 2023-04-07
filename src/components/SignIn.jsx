@@ -68,7 +68,7 @@ export default function SignIn() {
                 <label>Full name </label>
                 {wrongData
                 ? <input className="inputError" onChange={handleNameChange} placeholder="Ex. Stephen Thompson" type="text"></input>
-                : <input onChange={handleNameChange} placeholder="Ex. Stephen Thompson" type="text"></input>
+                : <input className="inputNoError" onChange={handleNameChange} placeholder="Ex. Stephen Thompson" type="text"></input>
                 }
                 
             </div>
@@ -76,7 +76,7 @@ export default function SignIn() {
                 <label>Email </label>
                 {wrongData
                 ? <input className="inputError" onChange={handleEmailChange} placeholder="Ex. wonderking@com.com" type="email"></input>
-                : <input onChange={handleEmailChange} placeholder="Ex. wonderking@com.com" type="email"></input>
+                : <input className="inputNoError" onChange={handleEmailChange} placeholder="Ex. wonderking@com.com" type="email"></input>
                 }
                 
             </div>
@@ -84,7 +84,7 @@ export default function SignIn() {
                 <label>Username </label>
                 {wrongData
                 ? <input className="inputError" onChange={handleUsernameChange} placeholder="Ex. Wonderboy" type="text"></input>
-                : <input onChange={handleUsernameChange} placeholder="Ex. Wonderboy" type="text"></input>
+                : <input className="inputNoError" onChange={handleUsernameChange} placeholder="Ex. Wonderboy" type="text"></input>
                 }
                 
             </div>
@@ -92,7 +92,7 @@ export default function SignIn() {
                 <label>Password </label>
                 {wrongData
                 ? <input className="inputError" onChange={handlePasswordChange} placeholder="Ex. AStrongPassword" type="password"></input>
-                : <input onChange={handlePasswordChange} placeholder="Ex. AStrongPassword" type="password"></input>
+                : <input className="inputNoError" onChange={handlePasswordChange} placeholder="Ex. AStrongPassword" type="password"></input>
                 }
                 
             </div>

@@ -30,7 +30,7 @@ export default function Login() {
             );
             window.location.reload(false);
         } catch {
-            console.log("Login Catched")
+            console.log("Could not Login")
             setWrongData(true)
         }
         
@@ -45,14 +45,14 @@ export default function Login() {
                     <label>Username</label>
                     {wrongData
                     ? <input className="inputError" onChange={handleUsernameChange} placeholder="Ex. Wonderboy" type="text"></input>
-                    : <input onChange={handleUsernameChange} placeholder="Ex. Wonderboy" type="text"></input>}
+                    : <input className="inputNoError" onChange={handleUsernameChange} placeholder="Ex. Wonderboy" type="text"></input>}
                     
                 </div>
                 <div className="formField">
                     <label>Password</label>
                     {wrongData
                     ? <input className="inputError" onChange={handlePasswordChange} placeholder="Ex. AStrongPassword" type="password"></input>
-                    : <input onChange={handlePasswordChange} placeholder="Ex. AStrongPassword" type="password"></input>}
+                    : <input className="inputNoError" onChange={handlePasswordChange} placeholder="Ex. AStrongPassword" type="password"></input>}
                 </div>
                 <button onClick={LoginWithPwd}>Login</button>
                 </form>
